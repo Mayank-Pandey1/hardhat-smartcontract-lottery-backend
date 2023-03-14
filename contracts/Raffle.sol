@@ -93,6 +93,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatible {
     }
 
     function performUpkeep(bytes calldata /* performData */) external override {
+        //function present in vrfConsumerV2 contract
         (bool upkeepNeeded, ) = checkUpkeep("");
         if (!upkeepNeeded)
             revert Raffle__UpkeepNotNeeded(
@@ -121,7 +122,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatible {
         s_recentWinner = recentWinner;
         s_players = new address payable[](0);
         s_lastTimeStamp = block.timestamp;
-        (bool success, ) = recentWinner.call{value: address(this).balance}("");
+        (bool success, ) = recentWinner.call{value: address(this).balance}(""); //sending money to the winner
         if (!success) {
             revert Raffle__TransferFailed();
         }
