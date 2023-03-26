@@ -45,6 +45,14 @@ module.exports = {
         },
     },
 
+    etherscan: {
+        // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+        apiKey: {
+            goerli: ETHERSCAN_API_KEY,
+            sepolia: ETHERSCAN_API_KEY,
+        },
+    },
+
     gasReporter: {
         enabled: true,
         noColors: true,
@@ -55,6 +63,6 @@ module.exports = {
     },
 
     mocha: {
-        timeout: 200000, //milliseconds
+        timeout: 1000000, //milliseconds
     },
 };
